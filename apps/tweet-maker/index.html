@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tweet Maker - Ramon Metzker</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <h1>Tweet Maker</h1>
+        </header>
+
+        <form action="index.html" id="tweet-form" method="POST">
+            <label for="username">User</label>
+            <input type="text" id="username" name="username">
+
+            <label for="tweet">Tweet</label>
+            <textarea maxlength="240" name="tweet" id="tweet"></textarea>
+
+            <button type="submit" id="btn-sub">Generate</button>
+        </form>
+
+        <div class="tweet">
+            <div class="tweet-head">
+                <div class="profile">
+                    <div class="profile-pic"></div>
+                    <div class="profile-info">
+                        <div class="profile-name"><span id="user">Matuê</span><img src="assets/svg/ver.svg" alt="Verified"></div>
+                        <div class="profile-arr"><span id="arroba">@matue30</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="tweet-body">
+                <p id="tweet-text">asdhaslkh asjhaslkjhaksjd asdasdasd asdasdasd asdasdasd asdasdasd</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        
+        $("#tweet-form").submit(function(e){
+            e.preventDefault();
+            var user = $("#username").val();
+            var url = "https://api.twitter.com/2/users/by/username/"+user+"?user.fields=profile_image_url,verified";
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", url);
+
+            xhr.setRequestHeader("Authorization", "Bearer AAAAAAAAAAAAAAAAAAAAAJ0lNQEAAAAA0hh6N4oVhttiiykeR3xN0hkclv8%3DIwMQ3VeTO4ediSJ4ll40OTE9pkRyDZlGIstSeuVfnysb0kyuqL");
+
+            xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                console.log(xhr.status);
+                console.log(xhr.responseText);
+            }};
+
+            xhr.send();
+            $("#arroba").html("@"+user);
+            $("#tweet-text").html($("#tweet").val());
+            console.log(username);
+        })
+        
+        
+    </script>
+</body>
+</html>

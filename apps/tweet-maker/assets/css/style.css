@@ -1,0 +1,115 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html{
+    width: 100%;
+    height: 100vh;
+}
+
+body{
+    background: cornflowerblue;
+    width: 100%;
+    height: 100%;
+}
+
+#wrapper{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+}
+header{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.tweet{
+    width: 400px;
+    height: 200px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    padding: 15px;
+    font: 14px -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+
+#tweet-form{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    font: 14px -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+
+#tweet-form input{
+    width: 100%;
+    display: block;
+    padding: 15px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    font-family: inherit;
+    font-size: 15px;
+    color: #6e6e6e;
+}
+
+#tweet-form input:focus{
+    outline: none;
+}
+
+#tweet-form label{
+    display: block;
+    text-align: left;
+    margin: 10px;
+    font-family: inherit;
+    font-weight: 600;
+}
+
+.tweet .profile{
+    display: flex;
+    align-items: center;
+    font: 14px -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+
+.tweet .profile .profile-info{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.tweet .profile .profile-name{
+    display: flex;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 19px;
+}
+
+.tweet .profile .profile-name span{
+    vertical-align: middle;
+    line-height: 16px;
+
+}
+
+.tweet .profile .profile-name img{
+    width: 16px;
+    height: 16px;
+    margin: 0 3px;
+}
+.tweet .profile .profile-pic{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #cacaca;
+}
+
+.tweet .tweet-body{
+    font-family: inherit;
+    margin-top: 10px;
+}
+
