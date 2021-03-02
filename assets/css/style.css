@@ -51,6 +51,31 @@ table {
 html,body,#wrapper{
     width: 100%;
     height: 100%;
+    transition: .2s ease;
+}
+
+body.dark{
+    background: #050827;
+    color: #fff;
+}
+body.dark #menu li a{
+    color: #fff;
+}
+body.dark #menu li a:hover{
+    background: #5b73f7;
+}
+body.dark main .conns a{
+    animation: flip .5s ease-in-out;
+    color: #fff;
+}
+body.dark main .conns a:hover{
+    color: #3F51B5;
+}
+body.dark .dash{
+    background: #fff;
+}
+body.dark .hr::after{
+    background: #050827;
 }
 
 #wrapper{
@@ -133,13 +158,12 @@ main .conns a{
     text-decoration: none;
     color: #000;
     transition: .2s ease;
+    animation: back-flip .5s ease-in-out;
 }
 
 main .conns a:hover{
     color: #3F51B5;
 }
-
-
 
 .dash{
     height: 1px;
@@ -151,6 +175,7 @@ main .conns a:hover{
     transform: rotate(0deg);
     transition-duration: .3s;
 }
+
 #dash-top{
     top: 0px;
 }
@@ -181,7 +206,7 @@ main .conns a:hover{
     font-size: 18px;
     font-weight: bold;
     z-index: 1;
-    
+    transition: .2s ease;
 }
 
 footer{
@@ -190,6 +215,81 @@ footer{
     font-family: 'Roboto Mono', monospace;
     font-size: 13px;
     font-weight: light;
+}
+
+#mode-darkmode{
+    margin: 24px;
+    position: relative;
+}
+
+#mode-darkmode input{
+    display: none;
+}
+
+#mode-darkmode label{
+    position: relative;
+    padding-left: 25px;
+    cursor: pointer;
+}
+
+#mode-darkmode label::before{
+    content: '';
+    width: 20px;
+    height: 20px;
+    display: block;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background-image: url(/assets/svg/lightmode.svg);
+    background-size: contain;
+    animation: check .3s ease;
+}
+#mode-darkmode label::after{
+    display: none;
+    background-image: url(/assets/svg/darkmode.svg);
+    position: absolute;
+    content: '';
+    width: 20px;
+    height: 20px;
+    left: 0px;
+    top: 0px;
+    background-size: contain;
+    animation: check .3s ease;
+}
+
+#mode-darkmode input:checked + label::before{
+    display: none;
+}
+
+#mode-darkmode input:checked + label::after{
+    display: block;
+}
+
+@keyframes check{
+    from{
+        transform: scale(0.1);
+    }
+    to{
+        transform: scale(1);
+    }
+}
+
+@keyframes flip{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes back-flip{
+    from{
+        transform: rotate(360deg);
+    }
+    to{
+        transform: rotate(0deg);
+    }
 }
 
 @keyframes hamb1{
