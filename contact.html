@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/assets/img/favicon.png" type="image/png" sizes="any">
+    <title>Ramon Metzker - Contact</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <script type="text/javascript"src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+        emailjs.init("user_eaPQ3AlqjLFrfzwMS9fVt");
+        })();
+    </script>
+    <script type="text/javascript">
+        window.onload = function() {
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                // these IDs from the previous steps
+                emailjs.sendForm('service_2bvbau8', 'contato_temp', this)
+                    .then(function() {
+                        console.log('ENVIADO!');
+                        document.getElementById("contact-form").reset();
+                        document.getElementById("msg-sent").style.top = "100px";
+                    }, function(error) {
+                        console.log('FALHOU...', error);
+                        document.getElementById("msg-error").style.top = "100px";
+                    });
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="modal-push" id="msg-sent">
+        <p>Message sent!</p>
+        <span class="mdi mdi-close close-modal"></span>
+    </div>
+    <div class="modal-push" id="msg-error">
+        <p>Failed...</p>
+        <span class="mdi mdi-close close-modal"></span>
+    </div>
+    <div id="wrapper">
+        <header>
+            <div class="nav">
+                <ul id="menu">
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="/about.html">About</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                </ul>
+                <div class="hamb-menu" id="hamb-menu">
+                    <div class="dash" id="dash-top"></div>
+                    <div class="dash" id="dash-mid"></div>
+                    <div class="dash" id="dash-bot"></div>
+                </div>
+            </div>
+        </header>
+        <main class="contact">
+            <div class="container">
+                <div class="userpic"></div>
+                <h1>Ramon Metzker</h1>
+                <h2> &lt; Junior Front-end<br>Web Developer /&gt;</h2>
+                <div class="conns">
+                    <a href="https://twitter.com/ramonmtzkr/" target="_blank"><span class="icon mdi mdi-twitter"></span></a>
+                    <a href="https://fb.me/metzkerramon" target="_blank"><span class="icon mdi mdi-facebook"></span></a>
+                    <a href="https://github.com/tzkrr/" target="_blank"><span class="icon mdi mdi-github"></span></a>
+                    <a href="https://linkedin.com/in/ramon-metzker/" target="_blank"><span class="icon mdi mdi-linkedin"></span></a>
+                </div>
+
+                <form action="contact.html" method="POST" id="contact-form">
+                    <label for="message">Message</label>
+                    <textarea name="message" id="message"></textarea>
+                    
+                    <label for="prospect">Your Name</label>
+                    <input type="text" name="prospect" id="name">
+
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </main>
+        <footer>
+            <div class="hr"></div>
+            <h3>by Ramon Metzker</h3>
+            <div id="mode-darkmode">
+                <input type="checkbox" name="darkmode" id="darkmode">
+                <label for="darkmode">Dark Mode</label>
+            </div>
+        </footer>
+    </div>
+    <script src="assets/js/script.js"></script>
+    <script>
+        const tx = document.getElementsByTagName('textarea');
+        for (let i = 0; i < tx.length; i++) {
+            tx[i].setAttribute('style', 'height:' + (tx[i].scrollHeight) + 'px;overflow-y:hidden;');
+            tx[i].addEventListener("input", OnInput, false);
+        }
+
+        function OnInput() {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + 'px';
+        }
+
+        $(".close-modal").click(function(){
+            $(this).parent().css({ top: '-200px', opacity: '1'});
+        })
+    </script>
+</body>
+</html>
