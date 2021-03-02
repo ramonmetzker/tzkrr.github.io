@@ -42,6 +42,10 @@
         <footer>
             <div class="hr"></div>
             <h3>by Ramon Metzker</h3>
+            <div id="mode-darkmode">
+                <input type="checkbox" name="darkmode" id="darkmode">
+                <label for="darkmode">Dark Mode</label>
+            </div>
         </footer>
     </div>
     <script>
@@ -62,6 +66,15 @@
                 document.getElementById("menu").style.display = "none";
             }
             
+        });
+        document.querySelector("input[name=darkmode]").addEventListener('change', function(){
+            if (this.checked){
+                document.body.classList.add("dark");
+                document.querySelector("label[for=darkmode]").innerHTML = "Light Mode";
+            }else{
+                document.body.classList.remove("dark");
+                document.querySelector("label[for=darkmode]").innerHTML = "Dark Mode";
+            }
         });
     </script>
 </body>
