@@ -344,6 +344,7 @@ footer{
         z-index: 3;
         display: block;
         height: 30px;
+	cursor: pointer;
     }
     .hamb-menu.active #dash-top{
         top: 10px;
@@ -365,6 +366,9 @@ footer{
         width: 100%;
         box-sizing: border-box;
     }
+    body.dark #menu{
+        background: #050827 ;
+    }
     #menu{
         display: none;
         position: fixed;
@@ -382,6 +386,7 @@ footer{
     #menu li a{
         font-size: 20px;
         padding: 8px 32px;
+	border: 1px solid #fff;
     }
     .hr{
         width: 80%;
