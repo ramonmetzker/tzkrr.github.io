@@ -54,6 +54,10 @@ html,body,#wrapper{
     transition: .2s ease;
 }
 
+.container{
+    max-width: 555px;
+}
+
 body.dark{
     background: #050827;
     color: #fff;
@@ -65,7 +69,7 @@ body.dark #menu li a:hover{
     background: #5b73f7;
 }
 body.dark main .conns a{
-    animation: flip .5s ease-in-out;
+    animation: zoominout .5s ease-in-out;
     color: #fff;
 }
 body.dark main .conns a:hover{
@@ -77,9 +81,23 @@ body.dark .dash{
 body.dark .hr::after{
     background: #050827;
 }
+body.dark footer h3{
+    color: #fff;
+}
+body.dark main h1{
+    color: #fff;
+}
+body.dark main h2{
+    color: #fff;
+}
+body.dark main .skills{
+    color: #fff;
+}
 
 #wrapper{
     text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
 #menu{
@@ -119,10 +137,14 @@ main{
     justify-content: center;
     font-family: 'Roboto Mono', monospace;
     text-align: center;
+    margin-top: 184px;
+}
+
+main.about{
+    margin-top: 74px;
 }
 
 main .userpic{
-    margin-top: 178px;
     width: 102px;
     height: 102px;
     background-image: url("/assets/img/profile.png");
@@ -135,16 +157,51 @@ main .userpic{
 main h1{
     font-size: 26px;
     margin: 15px 0;
+    transition: .2s ease;
+    letter-spacing: 0%;
+    font-weight: 400;
 }
+
+main h1.hd-title{
+    margin: 26px 0;
+}
+
 main h2{
     font-size: 16px;
-    font-weight: light;
+    font-weight: 200;
     margin: 15px 0;
     line-height: 18px;
+    color: #555555;
+    transition: .2s ease;
+}
+main h2.title{
+    font-size: 20px;
+    font-weight: 400;
+    text-align: left;
+}
+
+main p{
+    margin: 20px 0;
+    text-align: left;
+    font-weight: 200;
+    font-size: 16px;
+    box-sizing: border-box;
+    line-height: 27px;
+}
+
+main .skills{
+    list-style: initial;
+    list-style-position: inside;
+    text-align: left;
+    color: #555;
+}
+
+main .skills li{
+    line-height: 27px;
 }
 
 main .conns{
-    margin: 25px;
+    margin: 10px;
     font-size: 18px;
     display: flex;
     justify-content: space-between;
@@ -158,22 +215,27 @@ main .conns a{
     text-decoration: none;
     color: #000;
     transition: .2s ease;
-    animation: back-flip .5s ease-in-out;
+    animation: zoomoutin .5s ease-in-out;
 }
 
 main .conns a:hover{
     color: #3F51B5;
+    transform: translate3d(0, -2px, 0);
+}
+
+main .stars{
+    margin-left: 10px;
 }
 
 .dash{
     height: 1px;
     width: 30px;
-    background: #1A1A1A;
     display: block;
     transform-origin: center;
     position: absolute;
     transform: rotate(0deg);
     transition-duration: .3s;
+    background: #555;
 }
 
 #dash-top{
@@ -188,7 +250,7 @@ main .conns a:hover{
 
 .hr{
     width: 550px;
-    margin: 50px auto;
+    margin: 0 auto;
     background: #F0F0F0;
     height: 2px;
     position: relative;
@@ -210,11 +272,18 @@ main .conns a:hover{
 }
 
 footer{
+    margin-top: 50px;
     display: flex;
     flex-direction: column;
     font-family: 'Roboto Mono', monospace;
     font-size: 13px;
-    font-weight: light;
+    font-weight: 200;
+}
+
+footer h3{
+    margin-top: 60px;
+    color: #1A1A1A;
+    transition: .3s ease;
 }
 
 #mode-darkmode{
@@ -274,23 +343,30 @@ footer{
     }
 }
 
-@keyframes flip{
-    from{
-        transform: rotate(0deg);
+@keyframes zoominout{
+    0%{
+        transform: scale(1) rotate(0deg);
     }
-    to{
-        transform: rotate(360deg);
+    50%{
+        transform: scale(0);
+    }
+    100%{
+        transform: scale(1) rotate(360deg);
     }
 }
 
-@keyframes back-flip{
-    from{
-        transform: rotate(360deg);
+@keyframes zoomoutin{
+    0%{
+        transform: scale(1) rotate(360deg);
     }
-    to{
-        transform: rotate(0deg);
+    50%{
+        transform: scale(0);
+    }
+    100%{
+        transform: scale(1) rotate(0deg);
     }
 }
+
 
 @keyframes hamb1{
     0%{
@@ -328,14 +404,35 @@ footer{
         transform: rotate(-45deg);
     }
 }
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 5px;
+    transition: .2s ease;
+}
+::-webkit-scrollbar-thumb:hover{
+    background: #3b3b3b;
+}
+::-webkit-scrollbar-thumb:focus{
+    background: #3b3b3b;
+}
 
 @media only screen and (max-width: 640px){
     header{
         position: relative;
     }
-    header .nav{
+    /* header .nav{
         position: relative;
+    } */
+    main{
+        padding: 15px;
     }
+
     .hamb-menu{
         position: absolute;
         right: 15px;
@@ -344,7 +441,7 @@ footer{
         z-index: 3;
         display: block;
         height: 30px;
-	cursor: pointer;
+	    cursor: pointer;
     }
     .hamb-menu.active #dash-top{
         top: 10px;
@@ -369,13 +466,16 @@ footer{
     body.dark #menu{
         background: #050827 ;
     }
+    body.dark #menu li a{
+        border: 1px solid #fff;
+    }
     #menu{
         display: none;
         position: fixed;
         width: 100%;
         height: 100%;
         background: #fff;
-        margin-top: 140px;
+        padding-top: 140px;
         z-index: 3;
     }
     #menu li{
@@ -386,11 +486,23 @@ footer{
     #menu li a{
         font-size: 20px;
         padding: 8px 32px;
-	border: 1px solid #fff;
+	    border: 1px solid #555;
     }
     .hr{
         width: 80%;
-        margin: 60px auto;
         box-sizing: border-box;
     }  
+    main .stars{
+        display: block;
+        text-align: left;
+        margin-bottom: 10px;
+        margin-left: 22px;
+    }
+    .skills li{
+        padding-top: 10px;
+    }
+    .skills li:not(:last-child){
+        border-bottom: 1px solid #F0F0F0;
+    }
+    
 }
