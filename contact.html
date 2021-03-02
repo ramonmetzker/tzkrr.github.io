@@ -27,10 +27,10 @@
                     .then(function() {
                         console.log('ENVIADO!');
                         document.getElementById("contact-form").reset();
-                        document.getElementById("msg-sent").style.top = "100px";
+                        $("#msg-sent").css({ top: '100px', opacity: '1'});
                     }, function(error) {
                         console.log('FALHOU...', error);
-                        document.getElementById("msg-error").style.top = "100px";
+                        $("#msg-error").css({ top: '100px', opacity: '1'});
                     });
             });
         }
@@ -106,7 +106,7 @@
         }
 
         $(".close-modal").click(function(){
-            $(this).parent().css({ top: '-200px', opacity: '1'});
+            $(this).parent().css({ top: '-200px', opacity: '0'});
         })
     </script>
 </body>
