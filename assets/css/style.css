@@ -254,6 +254,7 @@ main .stars{
     line-height: 16px;
     transition: .3s ease;
     opacity: 0;
+	color: #fff;
 }
 
 .modal-push#msg-error{
